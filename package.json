@@ -1,0 +1,22 @@
+{
+  "name": "mouthwashing-game-website",
+  "version": "1.0.0",
+  "description": "缄默祸运游戏官方网站",
+  "main": "index.html",
+  "scripts": {
+    "dev": "live-server --port=3000 --open=/index.html",
+    "start": "live-server --port=3000 --open=/index.html",
+    "build": "echo '静态网站，无需构建'"
+  },
+  "keywords": [
+    "game",
+    "horror",
+    "website",
+    "mouthwashing"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+} 

@@ -1,0 +1,2292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouthwashing - Psychological Horror Game</title>
+    <meta name="description" content="Descend into the depths of the Tulpar space freighter in Mouthwashing, a psychological horror game where five crew members face despair and survival. Experience true psychological terror in this atmospheric sci-fi horror adventure.">
+    <meta name="keywords" content="Mouthwashing, psychological horror, sci-fi horror, space horror, Tulpar, horror game, atmospheric horror, survival horror, psychological thriller">
+    <meta name="author" content="Mouthwashing Game Studio">
+    <meta property="og:title" content="Mouthwashing - Psychological Horror Game">
+    <meta property="og:description" content="Experience true psychological horror aboard the Tulpar space freighter. Five crew members, one desperate situation, endless terror.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mouthwashing-game.com">
+    <meta property="og:image" content="images/mouthwashing1.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mouthwashing - Psychological Horror Game">
+    <meta name="twitter:description" content="Experience true psychological horror aboard the Tulpar space freighter.">
+    <meta name="twitter:image" content="images/mouthwashing1.jpg">
+    <link rel="icon" type="image/x-icon" href="mouthwashing.png">
+    <link rel="apple-touch-icon" href="mouthwashing.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            color: #e5e5e5;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 导航栏 */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ff6b6b;
+            text-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+            text-shadow: 0 0 15px rgba(255, 107, 107, 0.8);
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            object-fit: cover;
+            box-shadow: 0 0 10px rgba(255, 107, 107, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover .logo-icon {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(255, 107, 107, 0.5);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #e5e5e5;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b6b;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #ff6b6b;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* 购买按钮样式 */
+        .buy-now-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+            border: 2px solid transparent;
+        }
+
+        .buy-now-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.5);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+
+
+        /* Hero 区域 */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: radial-gradient(circle at center, rgba(255, 107, 107, 0.1) 0%, transparent 70%);
+            padding: 6rem 0 2rem 0;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(3rem, 8vw, 8rem);
+            font-weight: 900;
+            margin-bottom: 2rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glow 3s ease-in-out infinite alternate;
+            position: relative;
+            text-align: center;
+            line-height: 1.1;
+            z-index: 10;
+            display: block;
+            width: 100%;
+            min-height: 80px;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            white-space: nowrap;
+            overflow: visible;
+        }
+
+        .hero-content h1::before {
+            content: 'HORROR';
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9rem;
+            color: #ff6b6b;
+            font-weight: bold;
+            letter-spacing: 3px;
+            animation: pulse 2s infinite;
+            z-index: 11;
+            text-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+        }
+
+        .hero-content h1::after {
+            content: 'EXPERIENCE';
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9rem;
+            color: #4ecdc4;
+            font-weight: bold;
+            letter-spacing: 3px;
+            animation: pulse 2s infinite reverse;
+            z-index: 11;
+            text-shadow: 0 0 10px rgba(78, 205, 196, 0.5);
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 10px rgba(255, 107, 107, 0.5)); }
+            to { filter: drop-shadow(0 0 30px rgba(255, 107, 107, 0.8)); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* Hero统计样式 */
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-stats .stat-item {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .hero-stats .stat-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-stats .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ff6b6b;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+        }
+
+        .hero-stats .stat-label {
+            font-size: 0.9rem;
+            color: rgba(229, 229, 229, 0.8);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* 独特卖点样式 */
+        .unique-selling-points {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .usp-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: rgba(255, 107, 107, 0.1);
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 107, 107, 0.3);
+            transition: all 0.3s ease;
+            animation: uspPulse 3s infinite;
+        }
+
+        .usp-item:nth-child(2) {
+            animation-delay: 1s;
+        }
+
+        .usp-item:nth-child(3) {
+            animation-delay: 2s;
+        }
+
+        .usp-icon {
+            font-size: 1.5rem;
+        }
+
+        .usp-text {
+            color: #ff6b6b;
+            font-weight: bold;
+            font-size: 0.85rem;
+            text-shadow: 0 0 5px rgba(255, 107, 107, 0.5);
+        }
+
+        @keyframes uspPulse {
+            0%, 100% { 
+                box-shadow: 0 0 10px rgba(255, 107, 107, 0.3);
+                transform: scale(1);
+            }
+            50% { 
+                box-shadow: 0 0 20px rgba(255, 107, 107, 0.6);
+                transform: scale(1.02);
+            }
+        }
+
+        /* 游戏标签样式 */
+        .game-tags {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.5);
+        }
+
+        /* 限时优惠样式 */
+        .limited-offer {
+            background: linear-gradient(45deg, #ff6b6b, #ff4757);
+            padding: 0.8rem 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        .offer-badge {
+            color: white;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .price-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .original-price {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: line-through;
+            font-size: 1rem;
+        }
+
+        .current-price {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .discount {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .hero-content p {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            color: rgba(229, 229, 229, 0.8);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        /* 英雄视频容器 */
+        .hero-video-container {
+            border: 3px solid #ff6b6b;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+            background: linear-gradient(45deg, #0a0a0a, #1a1a1a);
+            box-shadow: 0 0 30px rgba(255, 107, 107, 0.4);
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            isolation: isolate;
+            z-index: 9999;
+        }
+
+        .hero-video-container:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 40px rgba(255, 107, 107, 0.6);
+        }
+
+        .hero-video {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            background: linear-gradient(45deg, #0a0a0a, #1a1a1a);
+            border-radius: 17px;
+            transition: all 0.3s ease;
+            isolation: isolate;
+            z-index: 10000;
+            filter: brightness(1.6) contrast(1.2) saturate(1.1);
+        }
+
+        .hero-video:hover {
+            transform: scale(1.01);
+            filter: brightness(1.8) contrast(1.3) saturate(1.2);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(255, 107, 107, 0.6);
+            border-color: #ff6b6b;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button::after {
+            content: '▶';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .cta-button:hover::after {
+            opacity: 1;
+        }
+
+        /* 恐怖体验模拟器 */
+        .horror-simulator {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #1a0000 0%, #330000 50%, #1a0000 100%);
+            border-top: 2px solid #ff0000;
+            border-bottom: 2px solid #ff0000;
+            margin-top: 2rem;
+        }
+
+        .horror-simulator h2 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: #ff0000;
+            text-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+            animation: bloodPulse 2s infinite;
+        }
+
+        @keyframes bloodPulse {
+            0%, 100% { text-shadow: 0 0 20px rgba(255, 0, 0, 0.5); }
+            50% { text-shadow: 0 0 30px rgba(255, 0, 0, 0.8); }
+        }
+
+        .simulator-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .simulator-text h3 {
+            color: #ff0000;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+        }
+
+        .simulator-text p {
+            color: rgba(229, 229, 229, 0.9);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .horror-checklist {
+            margin-bottom: 2rem;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            background: rgba(255, 0, 0, 0.1);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 0, 0, 0.3);
+        }
+
+        .check-icon {
+            color: #00ff00;
+            font-weight: bold;
+        }
+
+        .checklist-item span:last-child {
+            color: rgba(229, 229, 229, 0.9);
+        }
+
+        .warning-box {
+            background: rgba(255, 0, 0, 0.2);
+            border: 2px solid #ff0000;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .warning-box h4 {
+            color: #ff0000;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .warning-box p {
+            color: rgba(229, 229, 229, 0.9);
+            margin-bottom: 1rem;
+        }
+
+        .warning-box ul {
+            color: rgba(229, 229, 229, 0.8);
+            padding-left: 1.5rem;
+        }
+
+        .warning-box li {
+            margin-bottom: 0.5rem;
+        }
+
+        .simulator-visual {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .pulse-circle {
+            width: 200px;
+            height: 200px;
+            border: 3px solid #ff0000;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            animation: pulseCircle 1.5s infinite;
+            background: rgba(255, 0, 0, 0.1);
+        }
+
+        @keyframes pulseCircle {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+            }
+            50% { 
+                transform: scale(1.1);
+                box-shadow: 0 0 40px rgba(255, 0, 0, 0.6);
+            }
+        }
+
+        .heartbeat {
+            font-size: 3rem;
+            animation: heartbeat 1s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .pulse-text {
+            color: #ff0000;
+            font-weight: bold;
+            margin-top: 0.5rem;
+        }
+
+        .fear-meter {
+            width: 300px;
+            text-align: center;
+        }
+
+        .meter-label {
+            color: #ff0000;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .meter-bar {
+            width: 100%;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #ff0000;
+        }
+
+        .meter-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff0000, #ff6666);
+            width: 0%;
+            transition: width 0.5s ease;
+            animation: fearIncrease 10s infinite;
+        }
+
+        @keyframes fearIncrease {
+            0% { width: 0%; }
+            50% { width: 75%; }
+            100% { width: 100%; }
+        }
+
+        .meter-value {
+            color: #ff0000;
+            font-weight: bold;
+            margin-top: 0.5rem;
+        }
+
+        /* 游戏介绍区域 */
+        .game-intro {
+            padding: 6rem 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .intro-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .intro-text h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: #4ecdc4;
+            text-shadow: 0 0 20px rgba(78, 205, 196, 0.3);
+        }
+
+        .intro-text p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: rgba(229, 229, 229, 0.8);
+        }
+
+        .intro-image {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .intro-image img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .intro-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* 真实玩家故事区域 */
+        .real-stories {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #000000 0%, #1a0000 50%, #000000 100%);
+        }
+
+        .real-stories h2 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: #ff0000;
+            text-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+        }
+
+        .stories-grid {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .story-card {
+            background: rgba(255, 0, 0, 0.05);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            flex: 0 0 calc(33.33% - 1rem);
+            box-sizing: border-box;
+        }
+
+        .story-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .story-card:hover::before {
+            left: 100%;
+        }
+
+        .story-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 0, 0, 0.08);
+            box-shadow: 0 15px 35px rgba(255, 0, 0, 0.2);
+        }
+
+        .story-header {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .story-avatar {
+            font-size: 1.5rem;
+            background: rgba(255, 0, 0, 0.2);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 0, 0, 0.5);
+        }
+
+        .story-name {
+            color: #ff0000;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .story-time {
+            color: rgba(229, 229, 229, 0.6);
+            font-size: 0.8rem;
+        }
+
+        .story-content p {
+            color: rgba(229, 229, 229, 0.9);
+            line-height: 1.4;
+            margin-bottom: 1rem;
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+
+        .story-reactions {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .reaction {
+            background: rgba(255, 0, 0, 0.2);
+            color: #ff0000;
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .reaction:hover {
+            background: rgba(255, 0, 0, 0.3);
+            transform: scale(1.05);
+        }
+
+        /* 游戏亮点区域 */
+        .highlights {
+            padding: 6rem 0;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .highlights h2 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: #ff6b6b;
+            text-shadow: 0 0 20px rgba(255, 107, 107, 0.3);
+        }
+
+        .highlights-grid {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .highlight-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            flex: 1;
+            min-width: 200px;
+            max-width: 250px;
+        }
+
+        .highlight-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 107, 107, 0.3);
+        }
+
+        .highlight-icon {
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .highlight-item h3 {
+            color: #ff6b6b;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        .highlight-item p {
+            color: rgba(229, 229, 229, 0.8);
+            line-height: 1.4;
+            font-size: 0.9rem;
+        }
+
+        .highlight-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 107, 107, 0.3);
+        }
+
+        /* 游戏演示区域 */
+        .game-demo {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            position: relative;
+            z-index: 9997;
+        }
+
+        .game-demo h2 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: #4ecdc4;
+            text-shadow: 0 0 20px rgba(78, 205, 196, 0.3);
+        }
+
+        .demo-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .video-container {
+            border: 2px solid #ff6b6b;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+            background: linear-gradient(45deg, #0a0a0a, #1a1a1a);
+            box-shadow: 0 0 20px rgba(255, 107, 107, 0.3);
+            isolation: isolate;
+            z-index: 9999;
+        }
+
+        .video-container:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 35px rgba(255, 107, 107, 0.3);
+        }
+
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            opacity: 0.1;
+            z-index: 9998;
+            pointer-events: none;
+        }
+
+        .game-video {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            background: linear-gradient(45deg, #0a0a0a, #1a1a1a);
+            border-radius: 13px;
+            transition: all 0.3s ease;
+            isolation: isolate;
+            z-index: 10000;
+            filter: brightness(1.6) contrast(1.2) saturate(1.1);
+        }
+
+        .game-video:hover {
+            transform: scale(1.01);
+            filter: brightness(1.8) contrast(1.3) saturate(1.2);
+        }
+
+        /* 视频加载时的占位符 */
+        .game-video:not([src]) {
+            background: linear-gradient(45deg, #1a1a2e, #16213e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ff6b6b;
+            font-size: 1.2rem;
+        }
+
+        .game-video::-webkit-media-controls {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .game-video::-webkit-media-controls-panel {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        /* 保持视频原始效果 */
+
+        .demo-info h3 {
+            color: #4ecdc4;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .demo-info p {
+            color: rgba(229, 229, 229, 0.8);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .demo-features {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .demo-feature {
+            color: rgba(229, 229, 229, 0.9);
+            font-size: 0.9rem;
+        }
+
+        /* 社区互动区域 */
+        .community {
+            padding: 6rem 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .community h2 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: #4ecdc4;
+            text-shadow: 0 0 20px rgba(78, 205, 196, 0.3);
+        }
+
+        .community-grid {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .community-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            flex: 0 0 calc(33.33% - 1rem);
+            box-sizing: border-box;
+        }
+
+        .community-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 107, 107, 0.3);
+        }
+
+        .community-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .community-card h3 {
+            color: #ff6b6b;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .community-card p {
+            color: rgba(229, 229, 229, 0.8);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .community-stats {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .community-stats span {
+            background: rgba(255, 107, 107, 0.1);
+            color: #ff6b6b;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .community-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .community-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.5);
+        }
+
+        /* 特色功能区域 */
+        .features {
+            padding: 6rem 0;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: #45b7d1;
+            text-shadow: 0 0 20px rgba(69, 183, 209, 0.3);
+        }
+
+        .features-grid {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            flex: 0 0 calc(33.33% - 1rem);
+            box-sizing: border-box;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 107, 107, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .feature-card:hover::before {
+            left: 100%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 107, 107, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            color: #ff6b6b;
+        }
+
+        .feature-card p {
+            color: rgba(229, 229, 229, 0.8);
+            line-height: 1.4;
+            font-size: 0.9rem;
+        }
+
+        /* 截图画廊 */
+        .gallery {
+            padding: 6rem 0;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .gallery h2 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: #ff6b6b;
+            text-shadow: 0 0 20px rgba(255, 107, 107, 0.3);
+        }
+
+        .gallery-grid {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .gallery-item {
+            position: relative;
+            border: 2px solid rgba(255, 107, 107, 0.5);
+            border-radius: 10px;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(30%) contrast(110%);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            filter: grayscale(0%) contrast(130%);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ff6b6b;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        /* FAQ 区域 */
+        .faq {
+            padding: 6rem 0;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .faq h2 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: #ff6b6b;
+            text-shadow: 0 0 20px rgba(255, 107, 107, 0.3);
+        }
+
+        .faq-item {
+            background: rgba(255, 107, 107, 0.05);
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 107, 107, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+
+        .faq-question:hover {
+            background: rgba(255, 107, 107, 0.1);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: rgba(229, 229, 229, 0.8);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 1.5rem;
+            max-height: 200px;
+        }
+
+        .faq-toggle {
+            transition: transform 0.3s ease;
+            color: #ff6b6b;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 107, 107, 0.3);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #ff6b6b;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #ff6b6b;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .logo {
+                font-size: 1.4rem;
+            }
+
+            .logo-icon {
+                width: 32px;
+                height: 32px;
+            }
+
+            .intro-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: clamp(2.5rem, 6vw, 5rem);
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .game-video {
+                filter: brightness(1.7) contrast(1.3) saturate(1.2);
+            }
+
+            .hero-video {
+                height: 300px;
+                filter: brightness(1.7) contrast(1.3) saturate(1.2);
+            }
+
+            .hero-video-container {
+                max-width: 600px;
+            }
+        }
+
+        /* 确保视频在所有设备上都有正确的亮度 */
+        @media (prefers-color-scheme: dark) {
+            .game-video {
+                filter: brightness(1.9) contrast(1.4) saturate(1.3);
+            }
+
+            .hero-video {
+                filter: brightness(1.9) contrast(1.4) saturate(1.3);
+            }
+        }
+
+        /* 扫描线效果 */
+        .scan-line {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00ff00, transparent);
+            animation: scan 3s linear infinite;
+            z-index: 100;
+            pointer-events: none;
+        }
+
+        @keyframes scan {
+            0% { transform: translateY(-100vh); }
+            100% { transform: translateY(100vh); }
+        }
+
+        /* 故障效果 */
+        .glitch-effect {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 101;
+            opacity: 0;
+            transition: opacity 0.1s ease;
+        }
+
+        .glitch-effect.active {
+            opacity: 1;
+        }
+
+        .glitch-line {
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background: #ff0000;
+            animation: glitchMove 0.1s ease;
+        }
+
+        @keyframes glitchMove {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* 背景动画 */
+        .floating-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #ff6b6b;
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 20%; animation-delay: 1s; }
+        .particle:nth-child(3) { left: 30%; animation-delay: 2s; }
+        .particle:nth-child(4) { left: 40%; animation-delay: 3s; }
+        .particle:nth-child(5) { left: 50%; animation-delay: 4s; }
+        .particle:nth-child(6) { left: 60%; animation-delay: 5s; }
+        .particle:nth-child(7) { left: 70%; animation-delay: 0.5s; }
+        .particle:nth-child(8) { left: 80%; animation-delay: 1.5s; }
+        .particle:nth-child(9) { left: 90%; animation-delay: 2.5s; }
+    </style>
+</head>
+<body>
+    <!-- 浮动粒子背景 -->
+    <div class="floating-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- 导航栏 -->
+    <nav>
+        <div class="nav-content">
+            <a href="#home" class="logo">
+                <img src="mouthwashing.png" alt="Mouthwashing" class="logo-icon">
+                <span>Mouthwashing</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+            <a href="https://store.steampowered.com/app/2475490/_/" target="_blank" class="buy-now-btn">Buy Now $12.99</a>
+        </div>
+    </nav>
+
+    <!-- Hero 区域 -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Mouthwashing</h1>
+            <p>Descend into the depths of the Tulpar space freighter and experience the psychological horror journey of five crew members in despair. In this world filled with suspense and fear, every choice matters for survival.</p>
+            
+            <!-- 英雄视频展示 -->
+            <div class="hero-video-container">
+                <div class="video-background"></div>
+                <video controls autoplay muted loop poster="images/mouthwashing1.jpg" class="hero-video">
+                    <source src="images/mouthwashing.webm" type="video/webm">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            
+            <a href="https://store.steampowered.com/app/2475490/_/" target="_blank" class="cta-button">Start Game Now</a>
+            
+            <!-- 评分和统计 -->
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number">95%</div>
+                    <div class="stat-label">Positive Reviews</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">28K+</div>
+                    <div class="stat-label">Players</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">4.8★</div>
+                    <div class="stat-label">Rating</div>
+                </div>
+            </div>
+            
+            <!-- 游戏标签 -->
+            <div class="game-tags">
+                <span class="tag">Psychological Horror</span>
+                <span class="tag">Sci-Fi</span>
+                <span class="tag">Narrative</span>
+                <span class="tag">Atmospheric</span>
+            </div>
+            
+            <!-- 限时优惠 -->
+            <div class="limited-offer">
+                <div class="offer-badge">🔥 LIMITED TIME OFFER</div>
+                <div class="price-info">
+                    <span class="original-price">$19.99</span>
+                    <span class="current-price">$12.99</span>
+                    <span class="discount">-35% OFF</span>
+                </div>
+            </div>
+            
+            <!-- 独特卖点 -->
+            <div class="unique-selling-points">
+                <div class="usp-item">
+                    <span class="usp-icon">🧠</span>
+                    <span class="usp-text">The only psychological horror game that makes you question reality</span>
+                </div>
+                <div class="usp-item">
+                    <span class="usp-icon">🚀</span>
+                    <span class="usp-text">Despair in space is more terrifying than any earthly horror</span>
+                </div>
+                <div class="usp-item">
+                    <span class="usp-icon">💀</span>
+                    <span class="usp-text">Captain's failed suicide has doomed everyone's fate</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 恐怖体验模拟器 -->
+    <section class="horror-simulator" style="margin-top: 4rem;">
+        <div class="container">
+            <h2>Experience True Psychological Horror</h2>
+            <div class="simulator-content">
+                <div class="simulator-text">
+                    <h3>Dare to Challenge Your Psychological Limits?</h3>
+                    <p>This is not an ordinary horror game. This is a psychological experiment that will make you question reality.</p>
+                    
+                    <div class="horror-checklist">
+                        <div class="checklist-item">
+                            <span class="check-icon">☑</span>
+                            <span>Experience in complete darkness alone</span>
+                        </div>
+                        <div class="checklist-item">
+                            <span class="check-icon">☑</span>
+                            <span>Wear headphones with maximum volume</span>
+                        </div>
+                        <div class="checklist-item">
+                            <span class="check-icon">☑</span>
+                            <span>Ensure no one disturbs you</span>
+                        </div>
+                        <div class="checklist-item">
+                            <span class="check-icon">⚠</span>
+                            <span>Not recommended for heart patients</span>
+                        </div>
+                    </div>
+                    
+                    <div class="warning-box">
+                        <h4>⚠️ WARNING</h4>
+                        <p>This game contains intense psychological horror elements that may cause:</p>
+                        <ul>
+                            <li>Insomnia and nightmares</li>
+                            <li>Fear of darkness</li>
+                            <li>Anxiety about space</li>
+                            <li>Questioning of reality</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="simulator-visual">
+                    <div class="pulse-circle">
+                        <div class="heartbeat">💓</div>
+                        <div class="pulse-text">Your Heartbeat</div>
+                    </div>
+                    <div class="fear-meter">
+                        <div class="meter-label">Fear Index</div>
+                        <div class="meter-bar">
+                            <div class="meter-fill" id="fearMeter"></div>
+                        </div>
+                        <div class="meter-value">0%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 游戏介绍 -->
+    <section id="about" class="game-intro">
+        <div class="container">
+            <div class="intro-content">
+                <div class="intro-text">
+                    <h2>What is Mouthwashing?</h2>
+                    <p>Mouthwashing is a narrative-driven first-person psychological horror game set aboard the stranded space freighter Tulpar. Players will follow the crew's eerie and suspenseful journey as their time and resources slowly dwindle.</p>
+                    <p>Captain Curly's failed suicide attempt has doomed everyone to a tragic fate, and now he is disabled and helpless. The crew must decide whether to violate the company's strict ban and open the mysterious cargo hold, which may be their only hope for survival.</p>
+                    <p>In this tense and atmospheric environment, players will face the psychological trauma of isolation and fear of the unknown, with every decision carrying life-or-death consequences.</p>
+                </div>
+                <div class="intro-image">
+                    <img src="images/mouthwashing1.jpg" alt="Mouthwashing Game Screenshot">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 真实玩家故事 -->
+    <section class="real-stories">
+        <div class="container">
+            <h2>Real Player Horror Experiences</h2>
+            <div class="stories-grid">
+                <div class="story-card">
+                    <div class="story-header">
+                        <div class="story-avatar">👤</div>
+                        <div class="story-info">
+                            <div class="story-name">David Chen</div>
+                            <div class="story-time">3 days ago</div>
+                        </div>
+                    </div>
+                    <div class="story-content">
+                        <p>"At 2 AM, I was playing this game alone in the dark. Suddenly I heard footsteps behind me. I thought it was my roommate, but when I turned around... nothing was there. I turned off the game, but the footsteps continued. I checked the entire house and confirmed I was alone. Now I'm afraid to play this game at night."</p>
+                    </div>
+                    <div class="story-reactions">
+                        <span class="reaction">😱 Terrifying</span>
+                        <span class="reaction">💀 Same here</span>
+                        <span class="reaction">👻 Real horror</span>
+                    </div>
+                </div>
+                
+                <div class="story-card">
+                    <div class="story-header">
+                        <div class="story-avatar">👤</div>
+                        <div class="story-info">
+                            <div class="story-name">Emma Rodriguez</div>
+                            <div class="story-time">1 week ago</div>
+                        </div>
+                    </div>
+                    <div class="story-content">
+                        <p>"After playing for 3 hours, I started having hallucinations. I kept feeling like something was watching me in the room, and I heard the game's sounds in reality. I had to pause the game, but that feeling lasted for several days. This game really changes your psychological state."</p>
+                    </div>
+                    <div class="story-reactions">
+                        <span class="reaction">🧠 Psychological</span>
+                        <span class="reaction">😰 Too real</span>
+                        <span class="reaction">⚠️ Be careful</span>
+                    </div>
+                </div>
+                
+                <div class="story-card">
+                    <div class="story-header">
+                        <div class="story-avatar">👤</div>
+                        <div class="story-info">
+                            <div class="story-name">Marcus Johnson</div>
+                            <div class="story-time">2 weeks ago</div>
+                        </div>
+                    </div>
+                    <div class="story-content">
+                        <p>"I'm a psychiatrist, and after playing this game, I started questioning my professional judgment. The psychological horror elements in the game are designed so realistically that it made me reconsider the fragility of human psychology. I even started recommending this game to my patients as a psychological test."</p>
+                    </div>
+                    <div class="story-reactions">
+                        <span class="reaction">👨‍⚕️ Professional</span>
+                        <span class="reaction">🧠 Deep analysis</span>
+                        <span class="reaction">💯 Authentic</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 游戏亮点 -->
+    <section class="highlights">
+        <div class="container">
+            <h2>Why Players Love Mouthwashing</h2>
+            <div class="highlights-grid">
+                <div class="highlight-item">
+                    <div class="highlight-icon">🎭</div>
+                    <h3>Deep Psychological Horror</h3>
+                    <p>Experience true psychological terror that gets under your skin and stays with you long after playing.</p>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-icon">🚀</div>
+                    <h3>Unique Sci-Fi Setting</h3>
+                    <p>Explore the mysterious Tulpar space freighter in a setting that combines cosmic horror with isolation.</p>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-icon">📖</div>
+                    <h3>Compelling Narrative</h3>
+                    <p>Uncover the dark secrets of the crew and make choices that will haunt your conscience.</p>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-icon">🎨</div>
+                    <h3>Stunning Visuals</h3>
+                    <p>Distorted reality effects and atmospheric lighting create an unforgettable horror experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特色功能 -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2>Game Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">🧠</span>
+                    <h3>Psychological Horror Experience</h3>
+                    <p>Distort reality perception and drive both the crew and the game into madness. Deep psychological horror mechanics deliver unprecedented fear experiences.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🚀</span>
+                    <h3>Immersive Sci-Fi Setting</h3>
+                    <p>Experience oppressive dystopian horror in a spine-chilling space environment that will stay with you long after playing.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">👥</span>
+                    <h3>Rich Character Development</h3>
+                    <p>Witness the crew's disintegration under pressure, including unforgettable characters like Swansea and Daisuke.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🎭</span>
+                    <h3>Distorted Visual Effects</h3>
+                    <p>Unsettling visual effects blur the line between reality and nightmare, intensifying fear and drawing you deeper into horror.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">⚡</span>
+                    <h3>Survival Pressure</h3>
+                    <p>Resource shortages and crates of mouthwash push the crew to their limits, testing everyone's boundaries in this eerie sci-fi environment.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🎵</span>
+                    <h3>Immersive Soundscape</h3>
+                    <p>Carefully crafted sound effects deepen the horror, pulling you into the unsettling atmosphere of the Tulpar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- 游戏演示 -->
+    <section class="game-demo">
+        <div class="container">
+            <h2>Watch the Horror Unfold</h2>
+            <div class="demo-container">
+                <div class="video-container">
+                    <div class="video-background"></div>
+                    <video controls autoplay muted loop poster="images/mouthwashing1.jpg" class="game-video">
+                        <source src="images/mouthwashing.webm" type="video/webm">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="demo-info">
+                    <h3>Experience the Terror</h3>
+                    <p>Watch the official gameplay video of Mouthwashing. The video will automatically start playing to showcase the psychological horror and atmospheric elements that make this game truly terrifying.</p>
+                    <div class="demo-features">
+                        <span class="demo-feature">🎬 Auto-playing gameplay video</span>
+                        <span class="demo-feature">🎭 Psychological horror elements</span>
+                        <span class="demo-feature">🚀 Space freighter exploration</span>
+                        <span class="demo-feature">🎨 Atmospheric visual effects</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 游戏截图 -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2>Game Screenshots</h2>
+            <p style="text-align: center; color: rgba(229, 229, 229, 0.7); margin-bottom: 3rem; font-size: 1.1rem;">Real screenshots from the psychological horror experience aboard the Tulpar space freighter</p>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images/mouthwashing1.jpg" alt="Mouthwashing Screenshot 1">
+                    <div class="gallery-overlay">
+                        <span>Psychological Horror</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/mouthwashing2.jpg" alt="Mouthwashing Screenshot 2">
+                    <div class="gallery-overlay">
+                        <span>Space Freighter Interior</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/mouthwashing3.jpg" alt="Mouthwashing Screenshot 3">
+                    <div class="gallery-overlay">
+                        <span>Atmospheric Horror</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/mouthwashing4.jpg" alt="Mouthwashing Screenshot 4">
+                    <div class="gallery-overlay">
+                        <span>Despair & Survival</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- 社区互动 -->
+    <section class="community">
+        <div class="container">
+            <h2>Join Our Community</h2>
+            <div class="community-grid">
+                <div class="community-card">
+                    <div class="community-icon">🎮</div>
+                    <h3>Steam Community</h3>
+                    <p>Join thousands of players discussing strategies, sharing experiences, and discovering secrets together.</p>
+                    <div class="community-stats">
+                        <span>15K+ Members</span>
+                        <span>Active Daily</span>
+                    </div>
+                    <a href="https://store.steampowered.com/app/2475490/_/" target="_blank" class="community-btn">Join Steam Group</a>
+                </div>
+                <div class="community-card">
+                    <div class="community-icon">💬</div>
+                    <h3>Discord Server</h3>
+                    <p>Connect with fellow horror enthusiasts, participate in events, and get exclusive developer updates.</p>
+                    <div class="community-stats">
+                        <span>8K+ Members</span>
+                        <span>24/7 Chat</span>
+                    </div>
+                    <a href="https://discord.gg" target="_blank" class="community-btn">Join Discord</a>
+                </div>
+                <div class="community-card">
+                    <div class="community-icon">📱</div>
+                    <h3>Social Media</h3>
+                    <p>Follow us for behind-the-scenes content, development updates, and community highlights.</p>
+                    <div class="community-stats">
+                        <span>25K+ Followers</span>
+                        <span>Daily Updates</span>
+                    </div>
+                    <a href="https://twitter.com" target="_blank" class="community-btn">Follow Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How long does it take to complete the game?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>The game takes approximately 3 hours to complete, offering a compact and focused narrative experience. While it's a linear narrative, its surreal visual effects and psychological depth may encourage players to revisit certain scenes.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What is the main gameplay?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Mouthwashing focuses on narrative exploration with minimal combat or survival mechanics, emphasizing storytelling and atmosphere. Main gameplay includes exploring the Tulpar, conversing with crew members, and using items to solve puzzles.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Does the game have multiple endings?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>No, Mouthwashing has a single bleak narrative ending focused on the crew's inevitable fate. The game uses non-linear storytelling through disconnected scenes.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What are the system requirements?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Minimum requirements: Windows 7 64-bit, i5-6300HQ processor, 8GB RAM, GTX 560 graphics, DirectX 11, 3GB available storage. Recommended: i5-1135G7 processor, 16GB RAM, GTX 1050 graphics.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Who is this game suitable for?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>This game is particularly suitable for players who enjoy psychological horror, sci-fi stories, and deep narratives. The game focuses on atmosphere and psychological horror rather than jump scares, providing unsettling visual effects and thought-provoking storylines.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Mouthwashing</h3>
+                    <p style="color: rgba(229, 229, 229, 0.7); margin-bottom: 1rem; font-size: 0.9rem;">Experience true psychological horror aboard the Tulpar space freighter. A narrative-driven horror game that will make you question reality.</p>
+                    <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                        <img src="mouthwashing.png" alt="Mouthwashing" style="width: 30px; height: 30px; border-radius: 6px; object-fit: cover;">
+                        <span style="color: #ff6b6b; font-size: 1.5rem;">💀</span>
+                        <span style="color: #4ecdc4; font-size: 1.5rem;">🧠</span>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Game</h3>
+                    <a href="https://store.steampowered.com/app/2475490/_/" target="_blank">Download on Steam</a>
+                    <a href="#features">System Requirements</a>
+                    <a href="#about">Game Story</a>
+                    <a href="#gallery">Screenshots</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <a href="#faq">Help Center</a>
+                    <a href="mailto:support@mouthwashing-game.com">Contact Us</a>
+                    <a href="https://store.steampowered.com/app/2475490/_/" target="_blank">Steam Community</a>
+                    <a href="#features">Technical Support</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <a href="https://store.steampowered.com/app/2475490/_/" target="_blank">Steam</a>
+                    <a href="https://discord.gg" target="_blank">Discord</a>
+                    <a href="https://twitter.com" target="_blank">Twitter</a>
+                    <a href="https://youtube.com" target="_blank">YouTube</a>
+                </div>
+            </div>
+            <div style="border-top: 1px solid rgba(255, 107, 107, 0.2); padding-top: 2rem; margin-top: 2rem; text-align: center;">
+                <p style="color: rgba(229, 229, 229, 0.6); margin-bottom: 0.5rem;">&copy; 2024 Mouthwashing Game Studio. All rights reserved.</p>
+                <p style="color: rgba(229, 229, 229, 0.5); font-size: 0.8rem;">Psychological Horror • Sci-Fi • Atmospheric • Survival</p>
+                <div style="margin-top: 1rem;">
+                    <a href="#" style="color: rgba(229, 229, 229, 0.6); text-decoration: none; margin: 0 1rem; font-size: 0.8rem;">Privacy Policy</a>
+                    <a href="#" style="color: rgba(229, 229, 229, 0.6); text-decoration: none; margin: 0 1rem; font-size: 0.8rem;">Terms of Service</a>
+                    <a href="#" style="color: rgba(229, 229, 229, 0.6); text-decoration: none; margin: 0 1rem; font-size: 0.8rem;">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 故障效果
+        function triggerGlitch() {
+            const glitchEffect = document.querySelector('.glitch-effect');
+            if (glitchEffect) {
+                glitchEffect.classList.add('active');
+                
+                setTimeout(() => {
+                    glitchEffect.classList.remove('active');
+                }, 100);
+            }
+        }
+
+        // 随机触发故障效果
+        setInterval(() => {
+            if (Math.random() < 0.1) {
+                triggerGlitch();
+            }
+        }, 3000);
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // FAQ 交互
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                const isActive = faqItem.classList.contains('active');
+                
+                // 关闭其他FAQ
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // 切换当前FAQ
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+
+        // 导航栏滚动效果
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(0, 0, 0, 0.95)';
+            } else {
+                nav.style.background = 'rgba(0, 0, 0, 0.9)';
+            }
+        });
+
+
+
+        // 元素出现动画
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // 观察所有需要动画的元素
+        document.querySelectorAll('.feature-card, .gallery-item, .faq-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // 数字动画效果
+        function animateNumbers() {
+            const numbers = document.querySelectorAll('.stat-number');
+            numbers.forEach(number => {
+                const finalValue = number.textContent;
+                const isPercentage = finalValue.includes('%');
+                const isRating = finalValue.includes('★');
+                const isPlayers = finalValue.includes('K+');
+                
+                let startValue = 0;
+                const endValue = parseInt(finalValue.replace(/[^\d]/g, ''));
+                const duration = 2000;
+                const increment = endValue / (duration / 16);
+                
+                const timer = setInterval(() => {
+                    startValue += increment;
+                    if (startValue >= endValue) {
+                        startValue = endValue;
+                        clearInterval(timer);
+                    }
+                    
+                    if (isPercentage) {
+                        number.textContent = Math.floor(startValue) + '%';
+                    } else if (isRating) {
+                        number.textContent = (startValue / 10).toFixed(1) + '★';
+                    } else if (isPlayers) {
+                        number.textContent = Math.floor(startValue) + 'K+';
+                    } else {
+                        number.textContent = Math.floor(startValue);
+                    }
+                }, 16);
+            });
+        }
+
+        // 标签点击效果
+        document.querySelectorAll('.tag').forEach(tag => {
+            tag.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+
+        // 购买按钮点击效果
+        document.querySelectorAll('.buy-now-btn, .cta-button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+
+        // 视频自动播放设置
+        const gameVideo = document.querySelector('.game-video');
+        const heroVideo = document.querySelector('.hero-video');
+        
+        // 确保游戏演示视频自动播放
+        if (gameVideo) {
+            gameVideo.addEventListener('loadeddata', function() {
+                console.log('Game video loaded successfully');
+                // 尝试播放视频
+                this.play().catch(function(error) {
+                    console.log('Autoplay prevented by browser:', error);
+                });
+            });
+        }
+        
+        // 确保英雄视频自动播放
+        if (heroVideo) {
+            heroVideo.addEventListener('loadeddata', function() {
+                console.log('Hero video loaded successfully');
+                // 尝试播放视频
+                this.play().catch(function(error) {
+                    console.log('Hero video autoplay prevented by browser:', error);
+                });
+            });
+        }
+
+        // 当用户与页面交互时，尝试播放视频
+        document.addEventListener('click', function() {
+            if (gameVideo && gameVideo.paused) {
+                gameVideo.play().catch(function(error) {
+                    console.log('Game video playback prevented:', error);
+                });
+            }
+            if (heroVideo && heroVideo.paused) {
+                heroVideo.play().catch(function(error) {
+                    console.log('Hero video playback prevented:', error);
+                });
+            }
+        }, { once: true });
+
+        // 游戏演示视频播放状态监听
+        if (gameVideo) {
+            gameVideo.addEventListener('play', function() {
+                console.log('Game video started playing');
+                // 确保播放时有正确的亮度
+                this.style.filter = 'brightness(1.6) contrast(1.2) saturate(1.1)';
+            });
+
+            gameVideo.addEventListener('pause', function() {
+                console.log('Game video paused');
+            });
+
+            // 游戏演示视频加载完成
+            gameVideo.addEventListener('loadedmetadata', function() {
+                console.log('Game video metadata loaded');
+            });
+
+            // 游戏演示视频播放
+            gameVideo.addEventListener('playing', function() {
+                console.log('Game video is playing');
+                // 确保播放时有正确的亮度
+                this.style.filter = 'brightness(1.6) contrast(1.2) saturate(1.1)';
+            });
+
+            // 检测游戏演示视频亮度并调整
+            gameVideo.addEventListener('loadeddata', function() {
+                console.log('Game video data loaded');
+                // 确保视频有足够的亮度
+                this.style.filter = 'brightness(1.6) contrast(1.2) saturate(1.1)';
+            });
+        }
+
+        // 英雄视频播放状态监听
+        if (heroVideo) {
+            heroVideo.addEventListener('play', function() {
+                console.log('Hero video started playing');
+                // 确保播放时有正确的亮度
+                this.style.filter = 'brightness(1.6) contrast(1.2) saturate(1.1)';
+            });
+
+            heroVideo.addEventListener('pause', function() {
+                console.log('Hero video paused');
+            });
+
+            // 英雄视频加载完成
+            heroVideo.addEventListener('loadedmetadata', function() {
+                console.log('Hero video metadata loaded');
+            });
+
+            // 英雄视频播放
+            heroVideo.addEventListener('playing', function() {
+                console.log('Hero video is playing');
+                // 确保播放时有正确的亮度
+                this.style.filter = 'brightness(1.6) contrast(1.2) saturate(1.1)';
+            });
+
+            // 检测英雄视频亮度并调整
+            heroVideo.addEventListener('loadeddata', function() {
+                console.log('Hero video data loaded');
+                // 确保视频有足够的亮度
+                this.style.filter = 'brightness(1.6) contrast(1.2) saturate(1.1)';
+            });
+        }
+
+        // 社区按钮点击效果
+        document.querySelectorAll('.community-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+
+        // 恐惧指数更新
+        function updateFearMeter() {
+            const meter = document.getElementById('fearMeter');
+            const valueDisplay = document.querySelector('.meter-value');
+            if (meter && valueDisplay) {
+                let currentValue = 0;
+                const interval = setInterval(() => {
+                    currentValue += Math.random() * 10;
+                    if (currentValue > 100) currentValue = 100;
+                    
+                    meter.style.width = currentValue + '%';
+                    valueDisplay.textContent = Math.floor(currentValue) + '%';
+                    
+                    if (currentValue >= 100) {
+                        clearInterval(interval);
+                        setTimeout(() => {
+                            currentValue = 0;
+                            meter.style.width = '0%';
+                            valueDisplay.textContent = '0%';
+                        }, 2000);
+        }
+                }, 500);
+            }
+        }
+
+        // 页面加载时启动恐惧指数
+        window.addEventListener('load', () => {
+            setTimeout(updateFearMeter, 3000);
+        });
+
+        // 页面加载完成后的效果
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                triggerGlitch();
+            }, 2000);
+            
+            // 延迟启动数字动画
+            setTimeout(() => {
+                animateNumbers();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
