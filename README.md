@@ -1,36 +1,37 @@
-# 缄默祸运 - 游戏官方网站
+# Mouthwashing - Psychological Horror Game Website
 
-这是一个基于《Mouthwashing》游戏的心理恐怖主题网站。
+A modern, responsive website for the psychological horror game "Mouthwashing" featuring immersive design and interactive elements.
 
-## 项目特点
+## 🎮 Project Features
 
-- 🎮 心理恐怖游戏主题
-- 🎨 现代响应式设计
-- ✨ 流畅的动画效果
-- 📱 移动端适配
-- 🌟 优雅的视觉效果
+- 🧠 **Psychological Horror Theme** - Immersive horror game atmosphere
+- 🎨 **Modern Responsive Design** - Beautiful gradients and animations
+- ✨ **Smooth Animations** - CSS3 animations and transitions
+- 📱 **Mobile Optimized** - Perfect experience on all devices
+- 🌟 **Hero Video Showcase** - Prominent video display in hero section
+- 💀 **Horror Atmosphere** - Dark theme with red and teal accents
 
-## 快速开始
+## 🚀 Quick Start
 
-### 方法一：使用 npm（推荐）
+### Method 1: Using npm (Recommended)
 
-1. 安装依赖：
+1. Install dependencies:
 ```bash
 npm install
 ```
 
-2. 启动开发服务器：
+2. Start development server:
 ```bash
 npm run dev
 ```
 
-3. 打开浏览器访问：`http://localhost:3000`
+3. Open browser and visit: `http://localhost:3000`
 
-### 方法二：直接打开
+### Method 2: Direct Open
 
-直接双击 `index.html` 文件在浏览器中打开。
+Simply double-click `index.html` to open in your browser.
 
-### 方法三：使用 Python 简单服务器
+### Method 3: Using Python Simple Server
 
 ```bash
 # Python 3
@@ -40,49 +41,106 @@ python -m http.server 8000
 python -m SimpleHTTPServer 8000
 ```
 
-然后访问：`http://localhost:8000`
+Then visit: `http://localhost:8000`
 
-## 项目结构
+## 📁 Project Structure
 
 ```
 mouthwashing/
-├── index.html          # 主页面
-├── package.json        # 项目配置
-├── README.md          # 项目说明
-└── assets/            # 资源文件夹（可选）
-    ├── images/        # 图片
-    ├── css/          # 样式文件
-    └── js/           # JavaScript文件
+├── index.html          # Main website file
+├── package.json        # Project configuration
+├── README.md          # Project documentation
+├── mouthwashing.png   # Game logo/icon
+└── images/            # Game assets
+    ├── mouthwashing.webm    # Gameplay video
+    ├── mouthwashing1.jpg    # Screenshot 1
+    ├── mouthwashing2.jpg    # Screenshot 2
+    ├── mouthwashing3.jpg    # Screenshot 3
+    └── mouthwashing4.jpg    # Screenshot 4
 ```
 
-## 技术栈
+## 🛠️ Tech Stack
 
-- HTML5
-- CSS3 (动画、渐变、响应式)
-- JavaScript (交互效果)
-- 无需框架，纯静态网站
+- **HTML5** - Semantic markup and structure
+- **CSS3** - Animations, gradients, responsive design
+- **JavaScript** - Interactive effects and video controls
+- **Pure Static** - No frameworks, easy to deploy
 
-## 功能特性
+## 🎯 Key Features
 
-- 🏠 响应式导航栏
-- 🎯 Hero区域展示
-- 📖 游戏介绍
-- ⭐ 特色功能展示
-- 🖼️ 游戏截图画廊
-- ❓ FAQ常见问题
-- 📱 移动端优化
+### Hero Section
+- **Prominent Video Display** - Auto-playing gameplay video in hero area
+- **Game Statistics** - Player reviews, ratings, and community stats
+- **Call-to-Action** - Direct Steam store links
+- **Game Tags** - Psychological Horror, Sci-Fi, Narrative, Atmospheric
 
-## 浏览器支持
+### Interactive Elements
+- **Smooth Scrolling** - Navigation with smooth transitions
+- **FAQ Accordion** - Expandable question sections
+- **Hover Effects** - Interactive buttons and cards
+- **Video Controls** - Enhanced video player with brightness optimization
 
-- Chrome (推荐)
-- Firefox
-- Safari
-- Edge
+### Horror Experience
+- **Psychological Horror Simulator** - Interactive fear meter
+- **Real Player Stories** - Community horror experiences
+- **Game Features** - Detailed feature showcase
+- **Screenshot Gallery** - Game visual highlights
 
-## 开发说明
+## 🎨 Design Highlights
 
-这是一个纯静态网站，所有样式和脚本都内嵌在 `index.html` 文件中，便于部署和维护。
+### Visual Effects
+- **Gradient Backgrounds** - Dark theme with purple/blue gradients
+- **Glowing Borders** - Red accent borders with shadow effects
+- **Particle Animations** - Floating background particles
+- **Glitch Effects** - Occasional visual glitches for atmosphere
 
-## 许可证
+### Color Scheme
+- **Primary**: Dark backgrounds (#0a0a0a, #1a1a2e, #16213e)
+- **Accent**: Red (#ff6b6b) and Teal (#4ecdc4)
+- **Text**: Light gray (#e5e5e5) with transparency
 
-MIT License 
+## 📱 Responsive Design
+
+- **Desktop**: Full feature experience with large video display
+- **Tablet**: Optimized layout with adjusted spacing
+- **Mobile**: Simplified navigation and touch-friendly controls
+
+## 🌐 Browser Support
+
+- **Chrome** (Recommended)
+- **Firefox**
+- **Safari**
+- **Edge**
+
+## 🎮 Game Information
+
+**Mouthwashing** is a narrative-driven first-person psychological horror game set aboard the stranded space freighter Tulpar. Players follow the crew's eerie journey as their time and resources dwindle.
+
+### Game Features
+- **Psychological Horror** - Reality distortion and psychological depth
+- **Sci-Fi Setting** - Space freighter environment
+- **Narrative Focus** - Story-driven gameplay
+- **Atmospheric Horror** - Immersive sound and visual effects
+
+## 🔧 Development Notes
+
+This is a pure static website with all styles and scripts embedded in the `index.html` file for easy deployment and maintenance.
+
+### Video Optimization
+- **Auto-play** - Videos start automatically on page load
+- **Brightness Enhancement** - 60-90% brightness increase for better visibility
+- **Cross-browser Support** - Optimized for different browsers
+- **Mobile Optimization** - Responsive video controls
+
+## 📄 License
+
+MIT License
+
+## 🔗 Links
+
+- **Steam Store**: [Mouthwashing on Steam](https://store.steampowered.com/app/2475490/_/)
+- **GitHub Repository**: [https://github.com/amosoni/mouthwashing](https://github.com/amosoni/mouthwashing)
+
+---
+
+*Experience the psychological horror aboard the Tulpar space freighter. A narrative-driven horror game that will make you question reality.* 
