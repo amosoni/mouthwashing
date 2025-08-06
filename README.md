@@ -47,10 +47,14 @@ Then visit: `http://localhost:8000`
 
 ```
 mouthwashing/
-├── index.html          # Main website file
+├── index.html          # Main website file (AI-optimized)
 ├── package.json        # Project configuration
 ├── README.md          # Project documentation
 ├── mouthwashing.png   # Game logo/icon
+├── robots.txt         # AI-friendly crawler directives
+├── sitemap.xml        # Enhanced sitemap with media
+├── .htaccess          # AI-optimized server config
+├── 404.html           # Custom error page
 └── images/            # Game assets
     ├── mouthwashing.webm    # Gameplay video
     ├── mouthwashing1.jpg    # Screenshot 1
@@ -65,6 +69,7 @@ mouthwashing/
 - **CSS3** - Animations, gradients, responsive design
 - **JavaScript** - Interactive effects and video controls
 - **Pure Static** - No frameworks, easy to deploy
+- **SEO Optimized** - Canonical URLs, sitemap, robots.txt
 
 ## 🎯 Key Features
 
@@ -125,6 +130,16 @@ mouthwashing/
 ## 🔧 Development Notes
 
 This is a pure static website with all styles and scripts embedded in the `index.html` file for easy deployment and maintenance.
+
+### SEO Optimization
+- **Canonical URLs** - Prevents duplicate content issues
+- **Sitemap.xml** - Helps search engines understand site structure
+- **Robots.txt** - Directs search engine crawlers
+- **Meta Tags** - Complete Open Graph and Twitter Card support
+- **Structured Data** - Enhanced search result appearance
+- **AI-Friendly Optimization** - Optimized for AI crawlers (GPTBot, ClaudeBot, PerplexityBot)
+- **Enhanced Sitemap** - Includes image and video metadata
+- **AI Crawler Monitoring** - Tracks AI crawler activity
 
 ### Video Optimization
 - **Auto-play** - Videos start automatically on page load

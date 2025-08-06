@@ -1,0 +1,49 @@
+# AI Crawler Friendly Robots.txt
+User-agent: GPTBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: ClaudeBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: PerplexityBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: YouBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: BaiduSpider
+Allow: /
+Crawl-delay: 2
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: *
+Allow: /
+Crawl-delay: 2
+
+# Disallow problematic paths
+Disallow: /404.html
+Disallow: /error.html
+Disallow: /old/
+Disallow: /temp/
+Disallow: /test/
+Disallow: /admin/
+Disallow: /private/
+
+# Allow important content
+Allow: /images/
+Allow: /index.html
+Allow: /mouthwashing.png
+
+# Sitemap
+Sitemap: https://mouthwashing.live/sitemap.xml 

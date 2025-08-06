@@ -4,20 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mouthwashing - Psychological Horror Game</title>
-    <meta name="description" content="Descend into the depths of the Tulpar space freighter in Mouthwashing, a psychological horror game where five crew members face despair and survival. Experience true psychological terror in this atmospheric sci-fi horror adventure.">
-    <meta name="keywords" content="Mouthwashing, psychological horror, sci-fi horror, space horror, Tulpar, horror game, atmospheric horror, survival horror, psychological thriller">
+    <meta name="description" content="Experience psychological horror aboard the Tulpar space freighter. Five crew members face despair and survival in this atmospheric sci-fi horror game.">
+    <meta name="keywords" content="Mouthwashing, psychological horror, sci-fi horror, space horror, horror game">
     <meta name="author" content="Mouthwashing Game Studio">
+    
+    <!-- Canonical URL to prevent duplicate content issues -->
+    <link rel="canonical" href="https://mouthwashing.live/">
+    
+    <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Mouthwashing - Psychological Horror Game">
-    <meta property="og:description" content="Experience true psychological horror aboard the Tulpar space freighter. Five crew members, one desperate situation, endless terror.">
+    <meta property="og:description" content="Experience psychological horror aboard the Tulpar space freighter. Five crew members face despair and survival.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://mouthwashing-game.com">
-    <meta property="og:image" content="images/mouthwashing1.jpg">
+    <meta property="og:url" content="https://mouthwashing.live/">
+    <meta property="og:image" content="https://mouthwashing.live/images/mouthwashing1.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Mouthwashing Game">
+    
+    <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@mouthwashing_game">
     <meta name="twitter:title" content="Mouthwashing - Psychological Horror Game">
-    <meta name="twitter:description" content="Experience true psychological horror aboard the Tulpar space freighter.">
-    <meta name="twitter:image" content="images/mouthwashing1.jpg">
-    <link rel="icon" type="image/x-icon" href="mouthwashing.png">
-    <link rel="apple-touch-icon" href="mouthwashing.png">
+    <meta name="twitter:description" content="Experience psychological horror aboard the Tulpar space freighter.">
+    <meta name="twitter:image" content="https://mouthwashing.live/images/mouthwashing1.jpg">
+    
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/x-icon" href="https://mouthwashing.live/mouthwashing.png">
+    <link rel="apple-touch-icon" href="https://mouthwashing.live/mouthwashing.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://mouthwashing.live/mouthwashing.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://mouthwashing.live/mouthwashing.png">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta name="theme-color" content="#ff6b6b">
+    <meta name="msapplication-TileColor" content="#ff6b6b">
     
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-L3TSTM4C8D"></script>
@@ -28,6 +49,91 @@
 
       gtag('config', 'G-L3TSTM4C8D');
     </script>
+    
+    <!-- AI Crawler Monitor -->
+    <script>
+    // AI Crawler Monitor for mouthwashing.live
+    const aiUserAgents = ['GPTBot', 'ClaudeBot', 'PerplexityBot', 'YouBot', 'BaiduSpider', 'Bingbot', 'Googlebot'];
+    
+    function detectAICrawler(userAgent) {
+        return aiUserAgents.some(agent => userAgent.toLowerCase().includes(agent.toLowerCase()));
+    }
+    
+    function logAICrawler(userAgent, timestamp) {
+        console.log(`🤖 AI Crawler detected: ${userAgent} at ${timestamp}`);
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'ai_crawler_detected', {
+                'user_agent': userAgent,
+                'timestamp': timestamp
+            });
+        }
+    }
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        const userAgent = navigator.userAgent;
+        if (detectAICrawler(userAgent)) {
+            logAICrawler(userAgent, new Date().toISOString());
+        }
+        console.log('🔍 AI Crawler monitoring active for mouthwashing.live');
+    });
+    </script>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoGame",
+      "name": "Mouthwashing",
+      "description": "Experience psychological horror aboard the Tulpar space freighter. Five crew members face despair and survival in this atmospheric sci-fi horror game.",
+      "url": "https://mouthwashing.live/",
+      "image": "https://mouthwashing.live/images/mouthwashing1.jpg",
+      "genre": ["Psychological Horror", "Sci-Fi", "Narrative", "Atmospheric"],
+      "gamePlatform": "PC",
+      "applicationCategory": "Game",
+      "operatingSystem": "Windows",
+      "offers": {
+        "@type": "Offer",
+        "price": "12.99",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://store.steampowered.com/app/2475490/_/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Mouthwashing Game Studio"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "156"
+      },
+      "gameServer": {
+        "@type": "GameServer",
+        "serverName": "Steam",
+        "serverStatus": "Online"
+      },
+      "gameItem": {
+        "@type": "Game",
+        "name": "Mouthwashing",
+        "description": "A psychological horror game set aboard a stranded space freighter"
+      }
+    }
+    </script>
+    
+    <!-- Additional AI-Friendly Meta Tags -->
+    <meta name="ai-friendly" content="true">
+    <meta name="content-type" content="video-game">
+    <meta name="game-genre" content="psychological-horror">
+    <meta name="game-platform" content="pc">
+    <meta name="game-price" content="12.99">
+    <meta name="game-rating" content="4.8">
+    
+    <!-- AI Content Summary -->
+    <meta name="content-summary" content="Mouthwashing is a psychological horror game set aboard the Tulpar space freighter. Players experience the despair and survival of five crew members in an atmospheric sci-fi horror environment. The game features narrative-driven gameplay with minimal combat, focusing on exploration, character interaction, and puzzle-solving. Available on Steam for $12.99 with a 4.8/5 rating from 156 reviews.">
+    <meta name="content-keywords" content="psychological horror, sci-fi horror, space horror, narrative game, atmospheric horror, survival horror, Tulpar freighter, crew survival, puzzle game, Steam game">
+    <meta name="content-category" content="Video Games > Horror > Psychological">
+    <meta name="content-language" content="en">
+    <meta name="content-region" content="global">
     <style>
         * {
             margin: 0;
@@ -1511,18 +1617,18 @@
     <!-- 导航栏 -->
     <nav>
         <div class="nav-content">
-            <a href="#home" class="logo">
-                <img src="mouthwashing.png" alt="Mouthwashing" class="logo-icon">
+            <a href="#home" class="logo" title="Mouthwashing - Home">
+                <img src="https://mouthwashing.live/mouthwashing.png" alt="Mouthwashing" class="logo-icon">
                 <span>Mouthwashing</span>
             </a>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#home" title="Go to Home section">Home</a></li>
+                <li><a href="#about" title="Learn about the game story">About</a></li>
+                <li><a href="#features" title="View game features and requirements">Features</a></li>
+                <li><a href="#gallery" title="View game screenshots">Gallery</a></li>
+                <li><a href="#faq" title="Frequently asked questions">FAQ</a></li>
             </ul>
-            <a href="https://store.steampowered.com/app/2475490/_/" target="_blank" class="buy-now-btn">Buy Now $12.99</a>
+            <a href="https://store.steampowered.com/app/2475490/_/" target="_blank" class="buy-now-btn" title="Buy Mouthwashing on Steam for $12.99">Buy Now $12.99</a>
         </div>
     </nav>
 
@@ -1535,13 +1641,13 @@
             <!-- 英雄视频展示 -->
             <div class="hero-video-container">
                 <div class="video-background"></div>
-                <video controls autoplay muted loop poster="images/mouthwashing1.jpg" class="hero-video">
-                    <source src="images/mouthwashing.webm" type="video/webm">
+                <video controls autoplay muted loop poster="https://mouthwashing.live/images/mouthwashing1.jpg" class="hero-video">
+                    <source src="https://mouthwashing.live/images/mouthwashing.webm" type="video/webm">
                     Your browser does not support the video tag.
                 </video>
             </div>
             
-            <a href="https://store.steampowered.com/app/2475490/_/" target="_blank" class="cta-button">Start Game Now</a>
+            <a href="https://store.steampowered.com/app/2475490/_/" target="_blank" class="cta-button" title="Buy Mouthwashing on Steam">Start Game Now</a>
             
             <!-- 评分和统计 -->
             <div class="hero-stats">
@@ -1663,7 +1769,7 @@
                     <p>In this tense and atmospheric environment, players will face the psychological trauma of isolation and fear of the unknown, with every decision carrying life-or-death consequences.</p>
                 </div>
                 <div class="intro-image">
-                    <img src="images/mouthwashing1.jpg" alt="Mouthwashing Game Screenshot">
+                    <img src="https://mouthwashing.live/images/mouthwashing1.jpg" alt="Mouthwashing Game Screenshot">
                 </div>
             </div>
         </div>
@@ -1808,8 +1914,8 @@
             <div class="demo-container">
                 <div class="video-container">
                     <div class="video-background"></div>
-                    <video controls autoplay muted loop poster="images/mouthwashing1.jpg" class="game-video">
-                        <source src="images/mouthwashing.webm" type="video/webm">
+                    <video controls autoplay muted loop poster="https://mouthwashing.live/images/mouthwashing1.jpg" class="game-video">
+                        <source src="https://mouthwashing.live/images/mouthwashing.webm" type="video/webm">
                         Your browser does not support the video tag.
                     </video>
                 </div>
@@ -1834,25 +1940,25 @@
             <p style="text-align: center; color: rgba(229, 229, 229, 0.7); margin-bottom: 3rem; font-size: 1.1rem;">Real screenshots from the psychological horror experience aboard the Tulpar space freighter</p>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="images/mouthwashing1.jpg" alt="Mouthwashing Screenshot 1">
+                    <img src="https://mouthwashing.live/images/mouthwashing1.jpg" alt="Mouthwashing Screenshot 1">
                     <div class="gallery-overlay">
                         <span>Psychological Horror</span>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="images/mouthwashing2.jpg" alt="Mouthwashing Screenshot 2">
+                    <img src="https://mouthwashing.live/images/mouthwashing2.jpg" alt="Mouthwashing Screenshot 2">
                     <div class="gallery-overlay">
                         <span>Space Freighter Interior</span>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="images/mouthwashing3.jpg" alt="Mouthwashing Screenshot 3">
+                    <img src="https://mouthwashing.live/images/mouthwashing3.jpg" alt="Mouthwashing Screenshot 3">
                     <div class="gallery-overlay">
                         <span>Atmospheric Horror</span>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="images/mouthwashing4.jpg" alt="Mouthwashing Screenshot 4">
+                    <img src="https://mouthwashing.live/images/mouthwashing4.jpg" alt="Mouthwashing Screenshot 4">
                     <div class="gallery-overlay">
                         <span>Despair & Survival</span>
                     </div>
@@ -1876,7 +1982,7 @@
                         <span>15K+ Members</span>
                         <span>Active Daily</span>
                     </div>
-                    <a href="https://store.steampowered.com/app/2475490/_/" target="_blank" class="community-btn">Join Steam Group</a>
+                    <a href="https://store.steampowered.com/app/2475490/_/" target="_blank" class="community-btn" title="Join Steam Community Group">Join Steam Group</a>
                 </div>
                 <div class="community-card">
                     <div class="community-icon">💬</div>
@@ -1886,7 +1992,7 @@
                         <span>8K+ Members</span>
                         <span>24/7 Chat</span>
                     </div>
-                    <a href="https://discord.gg" target="_blank" class="community-btn">Join Discord</a>
+                    <a href="https://discord.gg" target="_blank" class="community-btn" title="Join our Discord server">Join Discord</a>
                 </div>
                 <div class="community-card">
                     <div class="community-icon">📱</div>
@@ -1896,7 +2002,7 @@
                         <span>25K+ Followers</span>
                         <span>Daily Updates</span>
                     </div>
-                    <a href="https://twitter.com" target="_blank" class="community-btn">Follow Us</a>
+                    <a href="https://twitter.com" target="_blank" class="community-btn" title="Follow us on Twitter">Follow Us</a>
                 </div>
             </div>
         </div>
@@ -1962,7 +2068,7 @@
                     <h3>Mouthwashing</h3>
                     <p style="color: rgba(229, 229, 229, 0.7); margin-bottom: 1rem; font-size: 0.9rem;">Experience true psychological horror aboard the Tulpar space freighter. A narrative-driven horror game that will make you question reality.</p>
                     <div style="display: flex; gap: 1rem; margin-top: 1rem;">
-                        <img src="mouthwashing.png" alt="Mouthwashing" style="width: 30px; height: 30px; border-radius: 6px; object-fit: cover;">
+                        <img src="https://mouthwashing.live/mouthwashing.png" alt="Mouthwashing" style="width: 30px; height: 30px; border-radius: 6px; object-fit: cover;">
                         <span style="color: #ff6b6b; font-size: 1.5rem;">💀</span>
                         <span style="color: #4ecdc4; font-size: 1.5rem;">🧠</span>
                     </div>
@@ -1970,23 +2076,23 @@
                 <div class="footer-section">
                     <h3>Game</h3>
                     <a href="https://store.steampowered.com/app/2475490/_/" target="_blank">Download on Steam</a>
-                    <a href="#features">System Requirements</a>
-                    <a href="#about">Game Story</a>
-                    <a href="#gallery">Screenshots</a>
+                                    <a href="#features" title="View system requirements">System Requirements</a>
+                <a href="#about" title="Read the game story">Game Story</a>
+                <a href="#gallery" title="View game screenshots">Screenshots</a>
                 </div>
                 <div class="footer-section">
                     <h3>Support</h3>
-                    <a href="#faq">Help Center</a>
-                    <a href="mailto:support@mouthwashing-game.com">Contact Us</a>
-                    <a href="https://store.steampowered.com/app/2475490/_/" target="_blank">Steam Community</a>
-                    <a href="#features">Technical Support</a>
+                                    <a href="#faq" title="Get help and support">Help Center</a>
+                <a href="mailto:support@mouthwashing-game.com" title="Contact support team">Contact Us</a>
+                <a href="https://store.steampowered.com/app/2475490/_/" target="_blank" title="Join Steam Community">Steam Community</a>
+                <a href="#features" title="Technical support information">Technical Support</a>
                 </div>
                 <div class="footer-section">
                     <h3>Follow Us</h3>
-                    <a href="https://store.steampowered.com/app/2475490/_/" target="_blank">Steam</a>
-                    <a href="https://discord.gg" target="_blank">Discord</a>
-                    <a href="https://twitter.com" target="_blank">Twitter</a>
-                    <a href="https://youtube.com" target="_blank">YouTube</a>
+                                    <a href="https://store.steampowered.com/app/2475490/_/" target="_blank" title="Get the game on Steam">Steam</a>
+                <a href="https://discord.gg" target="_blank" title="Join our Discord server">Discord</a>
+                <a href="https://twitter.com" target="_blank" title="Follow us on Twitter">Twitter</a>
+                <a href="https://youtube.com" target="_blank" title="Watch on YouTube">YouTube</a>
                 </div>
             </div>
             <div style="border-top: 1px solid rgba(255, 107, 107, 0.2); padding-top: 2rem; margin-top: 2rem; text-align: center;">
