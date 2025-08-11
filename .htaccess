@@ -5,21 +5,27 @@ RewriteEngine On
 # RewriteCond %{HTTPS} off
 # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# Remove trailing slashes
+# Remove trailing slashes (only if not a directory)
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{THE_REQUEST} /+[^?\s]*//
 RewriteRule ^(.+)/$ /$1 [R=301,L]
 
-# Redirect www to non-www
+# Redirect www to non-www (only if not already on non-www)
 RewriteCond %{HTTP_HOST} ^www\.mouthwashing\.live [NC]
 RewriteRule ^(.*)$ https://mouthwashing.live/$1 [L,R=301]
 
-# Redirect index.html to root
+# Redirect index.html to root (only if accessed directly)
 RewriteCond %{THE_REQUEST} /index\.html [NC]
+RewriteCond %{REQUEST_URI} ^/index\.html$
 RewriteRule ^index\.html$ / [R=301,L]
 
-# Handle 404 errors
-ErrorDocument 404 /404.html
+# Prevent direct access to 404.html and other error pages
+RewriteCond %{THE_REQUEST} /(404|error|500)\.html [NC]
+RewriteRule ^(404|error|500)\.html$ - [F]
+
+# Handle 404 errors with custom error page
+ErrorDocument 404 /error.html
+ErrorDocument 500 /error.html
 
 # Set default page
 DirectoryIndex index.html
@@ -58,7 +64,11 @@ DirectoryIndex index.html
     Header always set X-Frame-Options DENY
     Header always set X-XSS-Protection "1; mode=block"
     Header always set Referrer-Policy "strict-origin-when-cross-origin"
-    Header always set X-Robots-Tag "index, follow"
+
+    # Do NOT force robots index on error/legal pages
+    SetEnvIfNoCase Request_URI "/(404|error|privacy-policy|terms-of-service|cookie-policy)\.html$" is_noindex=1
+    Header always unset X-Robots-Tag env=is_noindex
+    Header always set X-Robots-Tag "index, follow" env=!is_noindex
 </IfModule>
 
 # AI Crawler specific headers

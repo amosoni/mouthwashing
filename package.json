@@ -1,12 +1,12 @@
 {
   "name": "mouthwashing-game-website",
   "version": "1.0.0",
-  "description": "缄默祸运游戏官方网站",
+  "description": "Official website for the psychological horror game Mouthwashing",
   "main": "index.html",
   "scripts": {
     "dev": "live-server --port=3000 --open=/index.html",
     "start": "live-server --port=3000 --open=/index.html",
-    "build": "echo '静态网站，无需构建'"
+    "build": "echo 'Static website, no build required'"
   },
   "keywords": [
     "game",
@@ -14,7 +14,7 @@
     "website",
     "mouthwashing"
   ],
-  "author": "Your Name",
+  "author": "Mouthwashing Game Studio",
   "license": "MIT",
   "devDependencies": {
     "live-server": "^1.2.2"

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Not Found - Mouthwashing</title>
-    <meta name="description" content="The page you're looking for doesn't exist. Return to the Mouthwashing psychological horror game website.">
+    <title>Error - Mouthwashing</title>
+    <meta name="description" content="An error occurred. Return to the Mouthwashing psychological horror game website.">
     <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
     <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
     <link rel="icon" type="image/x-icon" href="https://mouthwashing.live/mouthwashing.png">
@@ -32,18 +32,10 @@
             padding: 2rem;
         }
 
-        .error-code {
-            font-size: 8rem;
-            font-weight: bold;
+        .error-icon {
+            font-size: 4rem;
             color: #ff6b6b;
-            text-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
             margin-bottom: 1rem;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
         }
 
         .error-title {
@@ -105,10 +97,6 @@
         }
 
         @media (max-width: 768px) {
-            .error-code {
-                font-size: 6rem;
-            }
-            
             .error-title {
                 font-size: 1.5rem;
             }
@@ -121,10 +109,10 @@
 </head>
 <body>
     <div class="container">
-        <div class="error-code">404</div>
-        <h1 class="error-title">Page Not Found</h1>
+        <div class="error-icon">⚠️</div>
+        <h1 class="error-title">Something went wrong</h1>
         <p class="error-message">
-            The page you're looking for doesn't exist. It might have been moved, deleted, or you entered the wrong URL.
+            An error occurred while processing your request. Please try again or return to the home page.
         </p>
         <a href="/" class="home-button">Return to Home</a>
         
@@ -141,9 +129,16 @@
     </div>
 
     <script>
-        // Remove auto-redirect to prevent indexing issues
-        // Users can manually navigate back to home
-        console.log('404 page loaded - no auto-redirect to prevent indexing issues');
+        // Log error for debugging purposes
+        console.log('Error page loaded - this page should not be indexed');
+        
+        // Track error page views (optional)
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'error_page_viewed', {
+                'page_title': document.title,
+                'timestamp': new Date().toISOString()
+            });
+        }
     </script>
 </body>
 </html> 

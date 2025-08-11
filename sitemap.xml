@@ -3,7 +3,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
     
-    <!-- Main Page -->
+    <!-- Main Page - Canonical URL -->
     <url>
         <loc>https://mouthwashing.live/</loc>
         <lastmod>2025-01-27T12:00:00+00:00</lastmod>
@@ -42,21 +42,5 @@
             <video:duration>120</video:duration>
             <video:family_friendly>no</video:family_friendly>
         </video:video>
-    </url>
-    
-    <!-- Alternative URL -->
-    <url>
-        <loc>https://mouthwashing.live/index.html</loc>
-        <lastmod>2025-01-27T12:00:00+00:00</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    
-    <!-- Error Page -->
-    <url>
-        <loc>https://mouthwashing.live/404.html</loc>
-        <lastmod>2025-01-27T12:00:00+00:00</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.3</priority>
     </url>
 </urlset> 
